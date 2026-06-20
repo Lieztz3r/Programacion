@@ -21,7 +21,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
     </div>
 
-    <form th:object="${orden}">
+    <form th:action="@{/ordenes/guardar}" th:object="${orden}" method="POST">
 
         <div class="card shadow-sm border-0 mb-4">
             <div class="card-header bg-primary text-white">
