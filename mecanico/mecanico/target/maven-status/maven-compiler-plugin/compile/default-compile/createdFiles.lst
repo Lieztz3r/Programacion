@@ -1,0 +1,5 @@
+com\taller\mecanico\service\OrdenIngresoService.class
+com\taller\mecanico\dto\OrdenIngresoRequest.class
+com\taller\mecanico\repository\OrdenIngresoRepository.class
+com\taller\mecanico\repository\VehiculoRepository.class
+com\taller\mecanico\repository\ClienteRepository.class

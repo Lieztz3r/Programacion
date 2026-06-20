@@ -1,0 +1,15 @@
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\controller\OrdenIngresoController.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\dto\OrdenIngresoRequest.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\entity\Cliente.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\entity\EstadoCremallera.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\entity\EstadoVehiculo.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\entity\OrdenIngreso.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\entity\Vehiculo.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\enums\EstadoOrden.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\enums\TipoIngreso.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\enums\TipoVehiculo.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\MecanicoApplication.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\repository\ClienteRepository.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\repository\OrdenIngresoRepository.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\repository\VehiculoRepository.java
+C:\Users\tomax\Downloads\mecanico\mecanico\src\main\java\com\taller\mecanico\service\OrdenIngresoService.java
