@@ -11,6 +11,16 @@
         <h2 class="fw-bold text-secondary">Registrar Nueva Orden</h2>
     </div>
 
+    <div th:if="${mensajeExito}" class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+        <strong th:text="${mensajeExito}">¡Orden guardada con éxito!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+
+    <div th:if="${mensajeError}" class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+        <strong th:text="${mensajeError}">Hubo un error al guardar la orden.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+
     <form th:object="${orden}">
 
         <div class="card shadow-sm border-0 mb-4">
@@ -18,13 +28,14 @@
                 <h5 class="mb-0">1. Datos Generales</h5>
             </div>
             <div class="card-body">
-                <div class="row g-3"> <div class="col-md-4">
-                        <label class="form-label fw-bold">Trabajador que recibe</label>
-                        <input type="text" class="form-control" th:field="*{trabajador}" placeholder="Ej. Juan Pérez">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Trabajador que recibe <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" th:field="*{trabajador}" placeholder="Ej. Juan Pérez" required>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label fw-bold">Cliente</label>
-                        <input type="text" class="form-control" th:field="*{cliente}" placeholder="Nombre del cliente">
+                        <label class="form-label fw-bold">Cliente <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" th:field="*{cliente}" placeholder="Nombre del cliente" required>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label fw-bold">Teléfono</label>
@@ -41,16 +52,16 @@
             <div class="card-body">
                 <div class="row g-3">
                     <div class="col-md-4">
-                        <label class="form-label fw-bold">Tipo de Ingreso</label>
-                        <select class="form-select" th:field="*{tipoIngreso}">
+                        <label class="form-label fw-bold">Tipo de Ingreso <span class="text-danger">*</span></label>
+                        <select class="form-select" th:field="*{tipoIngreso}" required>
                             <option value="">Seleccione...</option>
                             <option value="VEHICULO">Vehículo Completo</option>
                             <option value="CREMALLERA">Cremallera Suelta</option>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label class="form-label fw-bold">Patente</label>
-                        <input type="text" class="form-control text-uppercase" th:field="*{patente}" placeholder="ABCD12">
+                        <label class="form-label fw-bold">Patente <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control text-uppercase" th:field="*{patente}" placeholder="ABCD12" required>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label fw-bold">Marca</label>
@@ -102,7 +113,7 @@
                 <div class="row">
                     <div class="col-12">
                         <label class="form-label fw-bold text-muted">Observaciones del Estado de Ingreso</label>
-                        <textarea class="form-control" rows="2" th:field="*{observacionesIngreso}" placeholder="Especifique detalles sobre piezas faltantes, rayones, etc..."></textarea>
+                        <textarea class="form-control" rows="2" th:field="*{observacionesIngreso}" placeholder="Especifique detalles..."></textarea>
                     </div>
                 </div>
             </div>
@@ -126,6 +137,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-5">
+            <button type="submit" class="btn btn-success btn-lg px-5 fw-bold shadow-sm">
+                Guardar Orden de Ingreso
+            </button>
         </div>
 
     </form>
