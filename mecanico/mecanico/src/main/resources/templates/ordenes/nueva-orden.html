@@ -1,7 +1,135 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><title>Nueva Orden</title></head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Nueva Orden - Taller Mecánico</title>
+</head>
 <body>
-    <h1>Formulario Nueva Orden (placeholder — Frontend lo reemplazará)</h1>
+
+<div layout:fragment="content">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-secondary">Registrar Nueva Orden</h2>
+    </div>
+
+    <form th:object="${orden}">
+
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">1. Datos Generales</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3"> <div class="col-md-4">
+                        <label class="form-label fw-bold">Trabajador que recibe</label>
+                        <input type="text" class="form-control" th:field="*{trabajador}" placeholder="Ej. Juan Pérez">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Cliente</label>
+                        <input type="text" class="form-control" th:field="*{cliente}" placeholder="Nombre del cliente">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Teléfono</label>
+                        <input type="tel" class="form-control" th:field="*{telefono}" placeholder="+56 9 ...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">2. Datos del Vehículo o Pieza</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Tipo de Ingreso</label>
+                        <select class="form-select" th:field="*{tipoIngreso}">
+                            <option value="">Seleccione...</option>
+                            <option value="VEHICULO">Vehículo Completo</option>
+                            <option value="CREMALLERA">Cremallera Suelta</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label fw-bold">Patente</label>
+                        <input type="text" class="form-control text-uppercase" th:field="*{patente}" placeholder="ABCD12">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label fw-bold">Marca</label>
+                        <input type="text" class="form-control" th:field="*{marca}">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label fw-bold">Modelo</label>
+                        <input type="text" class="form-control" th:field="*{modelo}">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label fw-bold">Año</label>
+                        <input type="number" class="form-control" th:field="*{anio}" placeholder="2020">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">3. Estado Visual y Accesorios al Ingreso</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3 mb-3">
+                    <div class="col-md-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" th:field="*{tieneCortaCorriente}">
+                            <label class="form-check-label">Corta Corriente</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" th:field="*{tieneTornillosRodados}">
+                            <label class="form-check-label">Tornillos Rodados</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" th:field="*{piezasFaltantes}">
+                            <label class="form-check-label">Piezas Faltantes</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" th:field="*{tieneRayones}">
+                            <label class="form-check-label">Rayones Visibles</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-label fw-bold text-muted">Observaciones del Estado de Ingreso</label>
+                        <textarea class="form-control" rows="2" th:field="*{observacionesIngreso}" placeholder="Especifique detalles sobre piezas faltantes, rayones, etc..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">4. Diagnóstico Previo de Cremallera</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-8">
+                        <label class="form-label fw-bold">Estado General</label>
+                        <input type="text" class="form-control" th:field="*{estadoCremallera}" placeholder="Ej. Fugas de líquido, retén roto...">
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" th:field="*{juegoExcesivo}">
+                            <label class="form-check-label fw-bold text-danger">Presenta Juego Excesivo</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
 </body>
 </html>
