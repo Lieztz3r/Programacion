@@ -1,7 +1,68 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><title>Detalle de Orden</title></head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Detalle de Orden - Taller Mecánico</title>
+</head>
 <body>
-    <h1>Detalle de Orden: <span th:text="${orden.id}"></span></h1>
+
+<div layout:fragment="content">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-secondary">
+            Detalle de la Orden <span class="text-primary" th:text="${orden != null ? '#ORD-' + orden.id : ''}"></span>
+        </h2>
+        <a th:href="@{/ordenes/lista}" class="btn btn-outline-secondary fw-bold">
+            Volver al Historial
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0 mb-4" th:if="${orden != null}">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Información del Ingreso</h5>
+            <span class="badge bg-warning text-dark fs-6" th:text="${orden.estadoCremallera}">ESTADO</span>
+        </div>
+        <div class="card-body">
+            
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <p class="text-muted mb-1 text-uppercase small fw-bold">Cliente</p>
+                    <p class="fw-bold fs-5 mb-0" th:text="${orden.cliente}">Nombre del Cliente</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-muted mb-1 text-uppercase small fw-bold">Teléfono</p>
+                    <p class="fw-bold mb-0" th:text="${orden.telefono}">+56 9 ...</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-muted mb-1 text-uppercase small fw-bold">Patente</p>
+                    <span class="badge bg-secondary fs-6 text-uppercase" th:text="${orden.patente}">ABCD12</span>
+                </div>
+            </div>
+            
+            <hr class="text-muted">
+            
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <p class="text-muted mb-1 text-uppercase small fw-bold">Tipo de Ingreso</p>
+                    <p class="fw-bold mb-0" th:text="${orden.tipoIngreso}">VEHICULO</p>
+                </div>
+                <div class="col-md-3">
+                    <p class="text-muted mb-1 text-uppercase small fw-bold">Vehículo</p>
+                    <p class="fw-bold mb-0" th:text="${orden.marca + ' ' + orden.modelo + ' (' + orden.anio + ')'}">Toyota Yaris</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-muted mb-1 text-uppercase small fw-bold">Observaciones de Ingreso</p>
+                    <p class="mb-0" th:text="${orden.observacionesIngreso ?: 'Sin observaciones registradas.'}">Detalles del estado...</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="alert alert-warning shadow-sm" th:if="${orden == null}">
+        <strong>Atención:</strong> No se encontró la información de esta orden. Es posible que haya sido eliminada o el ID sea incorrecto.
+    </div>
+
+</div>
+
 </body>
 </html>
