@@ -1,7 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><title>Orden Confirmada</title></head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Orden Confirmada - Taller Mecánico</title>
+</head>
 <body>
-    <h1>Orden creada: <span th:text="${orden.id}"></span></h1>
+
+<div layout:fragment="content" class="container text-center py-5">
+    
+    <div class="card shadow-sm border-0 mx-auto" style="max-width: 500px;">
+        <div class="card-body p-5">
+            <h1 class="display-1 text-success mb-3">✅</h1>
+            <h3 class="fw-bold text-secondary">¡Orden Registrada!</h3>
+            <p class="text-muted mt-3">La nueva orden de ingreso ha sido guardada exitosamente en la base de datos.</p>
+            
+            <div class="mt-4 d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a th:href="@{/ordenes/nueva}" class="btn btn-outline-primary px-4">Ingresar Otra Orden</a>
+                <a th:href="@{/ordenes/lista}" class="btn btn-primary px-4">Ir al Historial</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>
